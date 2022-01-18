@@ -19,7 +19,7 @@ const Wrap = styled(MainGutters)`
   z-index: 1000;
   background-color: black;
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid var(--chakra-colors-gray-700);
 `;
 
 const NavbarItem = styled.a<{ $active?: boolean }>`

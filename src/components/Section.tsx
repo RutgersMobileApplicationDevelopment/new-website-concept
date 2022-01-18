@@ -1,8 +1,9 @@
 import { MainGutters } from "./MainGutters";
 import { ReactChildren } from "../types";
-import { GameOfLifeBackground } from './GameOfLifeBackground'
+import { GameOfLifeBackground } from "./GameOfLifeBackground";
 
 import styled from "@emotion/styled";
+import { useColorModeValue } from "@chakra-ui/react";
 
 const WIDTH = "900px";
 
@@ -41,7 +42,11 @@ export function Section({
   dark?: boolean;
   gameOfLife?: boolean;
 }) {
-  const backgroundColor = dark ? "black" : "white";
+  const sysetmDarkMode = useColorModeValue(false, true);
+  const matchSystem = sysetmDarkMode
+    ? "var(--chakra-colors-gray-800)"
+    : "white";
+  const backgroundColor = dark ? "black" : matchSystem;
 
   return (
     <Gutters
@@ -62,7 +67,9 @@ export function Section({
       $backgroundColor={backgroundColor}
     >
       {children}
-      {gameOfLife && <GameOfLifeBackground interval={100} color="#eee" />}
+      {gameOfLife && (
+        <GameOfLifeBackground interval={100} dark={sysetmDarkMode} />
+      )}
     </Gutters>
   );
 }

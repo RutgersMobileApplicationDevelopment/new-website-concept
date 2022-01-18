@@ -11,14 +11,14 @@ const Navbar = styled.div`
     height: 15px;
     width: 15px;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid var(--chakra-colors-gray-300);
     margin: 2px;
   }
 
   display: flex;
   flex-direction: row;
-  border-bottom: 2px solid white;
-  padding: 15px;
+  border-bottom: 2px solid var(--chakra-colors-gray-300);
+  padding: 10px;
 
   @media screen and (max-width: 500px) {
     display: none;
@@ -27,7 +27,7 @@ const Navbar = styled.div`
 
 const Terminal = styled.div`
   border-radius: 7px;
-  border: 2px solid white;
+  border: 2px solid var(--chakra-colors-gray-300);
   color: white;
   margin: calc(10px + min(4vw, 80px));
 

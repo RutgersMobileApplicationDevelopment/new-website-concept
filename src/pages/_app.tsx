@@ -21,6 +21,10 @@ const themeConfig: Partial<ChakraTheme> = {
       700: "#2a69ac",
     },
   },
+  config: {
+    initialColorMode: "light",
+    useSystemColorMode: true,
+  },
 };
 
 const theme = extendTheme(themeConfig);

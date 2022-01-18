@@ -3,7 +3,7 @@ import { useOnScreen } from "../hooks"
 
 const RESOLUTION = 8;
 
-export const GameOfLifeBackground = ({ interval = 1000, color = "black" }) => {
+export const GameOfLifeBackground = ({ interval = 1000, dark = false }) => {
   const ref = useRef<HTMLCanvasElement>(null);
   const isVisible = useOnScreen(ref)
 
@@ -67,18 +67,21 @@ export const GameOfLifeBackground = ({ interval = 1000, color = "black" }) => {
 
   const render = React.useCallback(
     (ctx, grid) => {
+      const cellColor = dark ? '#000' : '#eee'
+      const background = dark ? '#1A202C' : '#fff'
+
       for (let col = 0; col < grid.length; col++) {
         for (let row = 0; row < grid[col].length; row++) {
           const cell = grid[col][row];
 
           ctx.beginPath();
           ctx.rect(col * RESOLUTION, row * RESOLUTION, RESOLUTION, RESOLUTION);
-          ctx.fillStyle = cell ? color : "#FFF";
+          ctx.fillStyle = cell ? cellColor : background;
           ctx.fill();
         }
       }
     },
-    [color]
+    [dark]
   );
 
   React.useEffect(() => {
