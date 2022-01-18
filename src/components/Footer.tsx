@@ -1,12 +1,15 @@
-import { Heading } from "@chakra-ui/react";
-import { MainGutters } from "./MainGutters";
 import {
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
+  Heading, List,
+  ListItem
 } from "@chakra-ui/react";
+import styled from "@emotion/styled";
+import { MainGutters } from "./MainGutters";
+
+const StyledList = styled(List)`
+  & > * {
+    margin: 6px 0;
+  }
+`
 
 export function Footer() {
   return (
@@ -17,12 +20,12 @@ export function Footer() {
       <Heading size="md" style={{ marginBottom: "8px" }}>
         Follow us
       </Heading>
-      <List>
+      <StyledList>
         <ListItem>Twitter</ListItem>
         <ListItem>Instagram</ListItem>
         <ListItem>Facebook</ListItem>
         <ListItem>GitHub</ListItem>
-      </List>
+      </StyledList>
     </MainGutters>
   );
 }

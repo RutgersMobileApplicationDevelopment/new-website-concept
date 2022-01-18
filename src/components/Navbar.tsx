@@ -1,6 +1,8 @@
 import { MainGutters } from "./MainGutters";
 import styled from "@emotion/styled";
 import { FaAndroid } from "react-icons/fa";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Logo = styled.span`
   font-weight: 900;
@@ -15,11 +17,13 @@ const Wrap = styled(MainGutters)`
   padding: 15px 0;
   background: rgba(255, 255, 255, 0.95);
   z-index: 1000;
-  border-bottom: 1px solid #eee;
+  background-color: black;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 `;
 
-const Link = styled.a<{ $active?: boolean }>`
-font-weight: 500;
+const NavbarItem = styled.a<{ $active?: boolean }>`
+  font-weight: 500;
   margin-left: 20px;
   text-decoration: none;
   border-top: 2px solid transparent;
@@ -28,12 +32,14 @@ font-weight: 500;
   ${({ $active }) =>
     $active
       ? `
-    border-bottom-color: #cc0033;
+    border-bottom-color: var(--chakra-colors-brand-800);
   `
       : ""}
 `;
 
 export function Navbar() {
+  const asPath = useRouter().asPath
+  
   return (
     <Wrap
       insideStyle={{
@@ -42,18 +48,26 @@ export function Navbar() {
         alignItems: "center",
       }}
     >
-      <FaAndroid
-        size={35}
-        style={{ marginTop: 4, marginRight: "0.2ch" }}
-        color="#cc0033"
-      />
-      <Logo>RUMAD</Logo>
+      <Link href="/">
+        <a style={{ display: "flex", flexDirection: "row" }}>
+          <FaAndroid
+            size={35}
+            style={{ marginTop: 4, marginRight: "0.2ch" }}
+            color="#cc0033"
+          />
+          <Logo>RUMAD</Logo>
+        </a>
+      </Link>
 
       <div style={{ flex: 1 }} />
 
-      <Link $active>Home</Link>
+      <Link href="/" passHref>
+        <NavbarItem $active={asPath === '/'}>Home</NavbarItem>
+      </Link>
 
-      <Link>Blog</Link>
+      <Link href="/blog" passHref>
+        <NavbarItem $active={asPath === '/blog'}>Blog</NavbarItem>
+      </Link>
     </Wrap>
   );
 }

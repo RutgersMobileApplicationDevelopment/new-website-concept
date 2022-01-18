@@ -39,12 +39,15 @@ const Terminal = styled.div`
 
 const TerminalContent = styled.div`
   position: relative;
-  padding: 15px;
 
   @media screen and (max-width: 500px) {
     padding: 0;
   }
-`
+
+  & > * {
+    padding: 15px;
+  }
+`;
 
 function Index() {
   return (
@@ -66,7 +69,7 @@ function Index() {
           <TerminalContent>
             <div style={{ position: "absolute" }}>
               <Text>
-                <Typist avgTypingDelay={35} cursor={{ element: "▌" }}>
+                <Typist avgTypingDelay={50} cursor={{ element: "▌" }}>
                   Hey there!
                   <br />
                   <br />
@@ -88,7 +91,6 @@ function Index() {
               <Heading size="xl" fontWeight={900}>
                 Hey There!
               </Heading>
-              <Typist.Delay ms={800} />
               <br />
               <Text>
                 We&apos;re the Rutgers Mobile App Development Club! We are a
@@ -153,10 +155,7 @@ function Index() {
         </SimpleGrid>
       </MainGutters>
 
-      <MainGutters
-        insideStyle={{ padding: "80px 0" }}
-        style={{ backgroundColor: "black", color: "white" }}
-      >
+      <Section dark>
         <Heading style={{ marginBottom: 10 }}>Incubator</Heading>
         <p>
           The RUMAD Incubator program is perfect for anyone who is looking to
@@ -171,9 +170,9 @@ function Index() {
           the week. The meetings will help keep you and your group on track to
           finishing the project.
         </p>
-      </MainGutters>
+      </Section>
 
-      <Section>
+      <Section gameOfLife>
         <Heading style={{ marginBottom: 10 }}>How it&apos;s built</Heading>
         <p style={{ marginBottom: 20 }}>
           How It&apos;s Built is a series of talks throughout the year that
